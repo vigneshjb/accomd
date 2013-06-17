@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  location: MyString
+  isBooked: false
+  user_id: 1
+
+two:
+  location: MyString
+  isBooked: false
+  user_id: 1

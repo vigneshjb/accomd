@@ -1,0 +1,27 @@
+<h1>Listing accomadations</h1>
+
+<table>
+  <tr>
+    <th>Location</th>
+    <th>Isbooked</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @accomadations.each do |accomadation| %>
+  <tr>
+    <td><%= accomadation.location %></td>
+    <td><%= accomadation.isBooked %></td>
+    <td><%= accomadation.user_id %></td>
+    <td><%= link_to 'Show', accomadation %></td>
+    <td><%= link_to 'Edit', edit_accomadation_path(accomadation) %></td>
+    <td><%= link_to 'Destroy', accomadation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Accomadation', new_accomadation_path %>
