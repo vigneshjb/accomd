@@ -1,13 +1,30 @@
-Accomd::Application.routes.draw do
+Arbnb::Application.routes.draw do
   
-  get "pages/home"
+  resources :users do
+  end
 
-  get "pages/contact"
+  resources :properties do
+      resources :bookings
+    end
 
-  get "pages/help"
+  resources :bookings ,:only => [:index,:manage]
 
-  resources :accomadations
-  resources :users
+  resources :user_sessions
+
+
+  get "pages/About"
+  get "pages/Home"
+  get "pages/Contact"
+  
+
+  root :to => 'pages#Home'
+  match 'login' => 'user_sessions#new', :as => :login
+  match 'logout' => 'user_sessions#destroy', :as => :logout
+  match '/home' => 'pages#Home'
+  match '/about' => 'pages#About'
+  match '/' => 'pages#Home'
+  match '/contact' => 'pages#Contact'
+  match '/bookings/manage' => 'bookings#manage'
 
 
   # The priority is based upon order of creation:

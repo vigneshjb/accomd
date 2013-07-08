@@ -1,0 +1,31 @@
+<%- model_class = Property -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<%if @properties.count>0%>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:id) %></th>
+        <th><%= model_class.human_attribute_name(:location) %></th>
+        <th><%= model_class.human_attribute_name(:user_id) %></th>
+        <th>Actions </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @properties.each do |property| %>
+        <tr>
+          <td><%= link_to property.id, property_path(property) %></td>
+          <td><%= property.location %></td>
+          <td><%= property.user_id %></td>
+          <td>
+            <%= link_to "Book", new_property_booking_path(property.id), :class=>"btn btn-mini", :method=>'get'%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="text-center"><strong>No properties match your search <u> <%=link_to "Click Here", root_path%> </u> to go back</strong></p>
+<%end%>

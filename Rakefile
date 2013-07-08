@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Accomd::Application.load_tasks
+Arbnb::Application.load_tasks
